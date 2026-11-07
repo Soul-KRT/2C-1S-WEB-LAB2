@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог — новинки — ДомТех</title>
+<meta name="description" content="Каталог бытовой техники: холодильники, стиральные машины, кухонная техника, климат.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;subset=cyrillic&amp;display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="sr-only" href="#main">Перейти к содержимому</a>
+<header class="site-header">
+ <div class="container header-top">
+  <a class="logo" href="index.html"><img src="img/logo.svg" alt="ДомТех — магазин бытовой техники" width="250" height="60"></a>
+  <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Меню">&#9776;</button>
+  <div class="header-actions">
+   <a class="cart-link" href="cart.html" aria-label="Корзина"><img src="img/i-cart.svg" alt="" width="40" height="36"><span class="cart-count">0</span></a>
+   <details class="account"><summary>Мой аккаунт</summary>
+    <ul><li><a href="checkout.html">Войти</a></li><li><a href="checkout.html">Регистрация</a></li><li><a href="cart.html">Мои заказы</a></li></ul></details>
+  </div>
+  <form class="search" role="search" action="catalog.html" method="get">
+   <label class="sr-only" for="cat">Категория</label>
+   <select id="cat" name="cat"><option>Все</option><option>Кухня</option><option>Уборка</option><option>Климат</option><option>ТВ</option></select>
+   <label class="sr-only" for="q">Поиск товара</label>
+   <input id="q" name="q" type="search" placeholder="Поиск товара…" minlength="2" maxlength="60" required title="Введите от 2 до 60 символов">
+   <button type="submit" aria-label="Найти">&#128269;</button>
+  </form>
+ </div>
+ <nav class="main-nav" id="main-nav" aria-label="Основное меню"><ul><li><a href="index.html">Главная</a></li><li><a href="catalog.html?group=big">Крупная техника</a></li><li><a href="catalog.html?group=kitchen">Кухня</a></li><li><a href="catalog.html?group=clean">Уборка</a></li><li><a href="catalog.html?group=climate">Климат</a></li><li><a href="catalog.html?group=hit">Хиты продаж</a></li><li><a href="catalog.html?group=sale">Акции</a></li></ul></nav>
+</header>
+<main id="main">
+<section class="page-title"><div class="container"><h1>Все товары</h1>
+<nav class="breadcrumbs" aria-label="Навигационная цепочка"><ol><li><a href="index.html">Главная</a></li><li><a href="catalog.html?group=all">Каталог</a></li><li aria-current="page">Все товары</li></ol></nav></div></section>
+<div class="container catalog" id="catalog-page">
+ <aside class="sidebar" aria-label="Фильтры по категориям">
+  <details open><summary>Категории</summary><ul id="cat-list"><li><a href="catalog.html?group=all" data-cat="">Все товары</a></li><li><a href="catalog.html?cat=Холодильники" data-cat="Холодильники">Холодильники</a></li><li><a href="catalog.html?cat=Стиральные машины" data-cat="Стиральные машины">Стиральные машины</a></li><li><a href="catalog.html?cat=Микроволновые печи" data-cat="Микроволновые печи">Микроволновые печи</a></li><li><a href="catalog.html?cat=Пылесосы" data-cat="Пылесосы">Пылесосы</a></li><li><a href="catalog.html?cat=Чайники" data-cat="Чайники">Чайники</a></li><li><a href="catalog.html?cat=Телевизоры" data-cat="Телевизоры">Телевизоры</a></li><li><a href="catalog.html?cat=Плиты и духовки" data-cat="Плиты и духовки">Плиты и духовки</a></li><li><a href="catalog.html?cat=Блендеры" data-cat="Блендеры">Блендеры</a></li><li><a href="catalog.html?cat=Кофемашины" data-cat="Кофемашины">Кофемашины</a></li><li><a href="catalog.html?cat=Кондиционеры" data-cat="Кондиционеры">Кондиционеры</a></li><li><a href="catalog.html?cat=Утюги" data-cat="Утюги">Утюги</a></li><li><a href="catalog.html?cat=Посудомоечные машины" data-cat="Посудомоечные машины">Посудомоечные машины</a></li><li><a href="catalog.html?cat=Обогреватели" data-cat="Обогреватели">Обогреватели</a></li></ul></details>
+  <details open><summary>Бренд</summary><div class="checks side"><label><input type="checkbox" name="brand" value="Aqua">Aqua</label><label><input type="checkbox" name="brand" value="Chef">Chef</label><label><input type="checkbox" name="brand" value="Nordic">Nordic</label><label><input type="checkbox" name="brand" value="Roomy">Roomy</label><label><input type="checkbox" name="brand" value="Steel">Steel</label><label><input type="checkbox" name="brand" value="Vision">Vision</label></div></details>
+  <details open><summary>Серия</summary><div class="checks side"><label><input type="checkbox" name="series" value="Эконом">Эконом</label><label><input type="checkbox" name="series" value="Комфорт">Комфорт</label><label><input type="checkbox" name="series" value="Премиум">Премиум</label></div></details>
+ </aside>
+ <section aria-label="Товары">
+  <form class="filters" id="filters" action="catalog.html" method="get">
+   <div><h2>Популярное</h2><p class="tags"><a href="#" data-tag="No Frost">No Frost</a><a href="#" data-tag="Инвертор">Инвертор</a><a href="#" data-tag="Wi-Fi">Wi-Fi</a><a href="#" data-tag="Smart">Smart</a></p></div>
+   <fieldset><legend><h2>Класс энергопотребления</h2></legend><div class="checks"><label><input type="checkbox" name="cls" value="A+++">A+++</label><label><input type="checkbox" name="cls" value="A++">A++</label><label><input type="checkbox" name="cls" value="A+">A+</label><label><input type="checkbox" name="cls" value="A">A</label><label><input type="checkbox" name="cls" value="B">B</label></div></fieldset>
+   <fieldset><legend><h2>Цена</h2></legend><div class="price-range">
+    <label class="sr-only" for="price-min">Минимальная цена</label><input type="range" id="price-min" name="min" min="0" max="100000" step="500" value="0">
+    <label class="sr-only" for="price-max">Максимальная цена</label><input type="range" id="price-max" name="max" min="0" max="100000" step="500" value="100000">
+    <output class="o"><span id="out-min">0 ₽</span><span id="out-max">100 000 ₽</span></output></div></fieldset>
+  </form>
+  <div class="toolbar"><label for="sort">Сортировка <select id="sort"><option value="name">По названию</option><option value="asc">Сначала дешёвые</option><option value="desc">Сначала дорогие</option><option value="disc">Сначала со скидкой</option></select></label>
+   <label for="show">Показать <select id="show"><option value="6">06</option><option value="9" selected>09</option><option value="12">12</option></select></label>
+   <button class="btn btn-light" type="button" id="reset">Сбросить фильтры</button><span class="found" id="found" role="status"></span></div>
+  <ul class="products" id="products"></ul>
+  <p class="empty" id="empty" hidden>По вашему запросу ничего не найдено. Измените фильтры или <button type="button" class="linkbtn" id="reset2">сбросьте их</button>.</p>
+  <div class="pager"><nav aria-label="Страницы"><ul id="pager"></ul></nav>
+   <button class="btn btn-outline" type="button" id="show-all">Показать все</button></div>
+ </section>
+</div>
+<div class="features-band" id="benefits"><div class="container">
+ <article><img src="img/i-truck.svg" alt="" width="48" height="36"><h3>Бесплатная доставка</h3><p>Доставим крупную технику бесплатно при заказе от 15 000 ₽.</p></article>
+ <article><img src="img/i-percent.svg" alt="" width="40" height="40"><h3>Скидки и рассрочка</h3><p>Еженедельные акции и рассрочка на 12 месяцев без переплат.</p></article>
+ <article><img src="img/i-crown.svg" alt="" width="48" height="36"><h3>Гарантия качества</h3><p>Официальная гарантия до 3 лет и собственный сервис.</p></article>
+</div></div>
+<section class="sub-wrap" aria-label="Отзыв и подписка"><div class="container">
+ <figure class="testimonial"><img src="img/avatar.svg" alt="Анна Петрова" width="62" height="62">
+  <div><blockquote><p>«Заказала стиральную машину — привезли на следующий день, установили бесплатно. Цены ниже, чем в сетевых магазинах, а гарантия 3 года!»</p></blockquote>
+  <figcaption><cite>Анна Петрова</cite><small>Симферополь</small></figcaption>
+  <div class="dots" aria-hidden="true"><span></span><span class="on"></span><span></span></div></div></figure>
+ <section class="subscribe"><h2>Подписка</h2><p>на новости и акции магазина</p>
+  <form class="sub-form" data-validate data-success="Спасибо! Вы подписаны на рассылку." novalidate>
+   <label class="sr-only" for="sub-email">Ваш e-mail</label>
+   <input id="sub-email" name="email" type="email" placeholder="Введите ваш e-mail" required maxlength="80" autocomplete="email">
+   <button type="submit">Подписаться</button></form>
+  <p class="status sub-msg" role="status" style="text-transform:none"></p></section>
+</div></section>
+</main>
+<footer>
+ <div class="container footer-main">
+  <section class="footer-about"><a class="logo" href="index.html"><img src="img/logo.svg" alt="ДомТех" width="250" height="60"></a>
+   <p>ДомТех — магазин бытовой техники для кухни, уборки и климата. Только сертифицированные товары с официальной гарантией производителя.</p>
+   <p>Бесплатная доставка по городу от 15 000 ₽, установка и подключение, рассрочка без переплат. Работаем ежедневно с 9:00 до 21:00.</p></section>
+  <nav aria-labelledby="f1"><h2 id="f1">Компания</h2><ul><li><a href="index.html">Главная</a></li><li><a href="catalog.html">Каталог</a></li><li><a href="index.html#about">О нас</a></li><li><a href="index.html#benefits">Как мы работаем</a></li><li><a href="checkout.html">Контакты</a></li></ul></nav>
+  <nav aria-labelledby="f2"><h2 id="f2">Информация</h2><ul><li><a href="index.html">Условия сделки</a></li><li><a href="index.html">Конфиденциальность</a></li><li><a href="cart.html">Как купить</a></li><li><a href="checkout.html">Доставка и оплата</a></li><li><a href="catalog.html">Акции</a></li></ul></nav>
+  <nav aria-labelledby="f3"><h2 id="f3">Категории</h2><ul><li><a href="catalog.html">Кухня</a></li><li><a href="catalog.html">Стирка</a></li><li><a href="catalog.html">Уборка</a></li><li><a href="catalog.html">Климат</a></li><li><a href="catalog.html">Все товары</a></li></ul></nav>
+ </div>
+ <div class="footer-bottom"><div class="container"><small>© 2026 ДомТех. Все права защищены.</small>
+  <div class="social"><a href="#" aria-label="ВКонтакте">vk</a><a href="#" aria-label="Telegram">tg</a><a href="#" aria-label="YouTube">yt</a><a href="#" aria-label="Одноклассники">ok</a><a href="#" aria-label="Pinterest">p</a></div></div></div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

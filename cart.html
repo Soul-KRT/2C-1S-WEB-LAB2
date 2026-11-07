@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Корзина — ДомТех</title>
+<meta name="description" content="Ваша корзина: товары, доставка, купон и итоговая сумма.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;subset=cyrillic&amp;display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="sr-only" href="#main">Перейти к содержимому</a>
+<header class="site-header">
+ <div class="container header-top">
+  <a class="logo" href="index.html"><img src="img/logo.svg" alt="ДомТех — магазин бытовой техники" width="250" height="60"></a>
+  <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Меню">&#9776;</button>
+  <div class="header-actions">
+   <a class="cart-link" href="cart.html" aria-label="Корзина"><img src="img/i-cart.svg" alt="" width="40" height="36"><span class="cart-count">0</span></a>
+   <details class="account"><summary>Мой аккаунт</summary>
+    <ul><li><a href="checkout.html">Войти</a></li><li><a href="checkout.html">Регистрация</a></li><li><a href="cart.html">Мои заказы</a></li></ul></details>
+  </div>
+  <form class="search" role="search" action="catalog.html" method="get">
+   <label class="sr-only" for="cat">Категория</label>
+   <select id="cat" name="cat"><option>Все</option><option>Кухня</option><option>Уборка</option><option>Климат</option><option>ТВ</option></select>
+   <label class="sr-only" for="q">Поиск товара</label>
+   <input id="q" name="q" type="search" placeholder="Поиск товара…" minlength="2" maxlength="60" required title="Введите от 2 до 60 символов">
+   <button type="submit" aria-label="Найти">&#128269;</button>
+  </form>
+ </div>
+ <nav class="main-nav" id="main-nav" aria-label="Основное меню"><ul><li><a href="index.html">Главная</a></li><li><a href="catalog.html?group=big">Крупная техника</a></li><li><a href="catalog.html?group=kitchen">Кухня</a></li><li><a href="catalog.html?group=clean">Уборка</a></li><li><a href="catalog.html?group=climate">Климат</a></li><li><a href="catalog.html?group=hit">Хиты продаж</a></li><li><a href="catalog.html?group=sale">Акции</a></li></ul></nav>
+</header>
+<main id="main">
+<section class="page-title"><div class="container"><h1>Корзина</h1>
+<nav class="breadcrumbs" aria-label="Навигационная цепочка"><ol><li><a href="index.html">Главная</a></li><li><a href="catalog.html">Каталог</a></li><li aria-current="page">Корзина</li></ol></nav></div></section>
+<div class="container" style="padding-top:30px">
+ <table class="cart-table" id="cart-table"><caption class="sr-only">Товары в корзине</caption>
+  <thead><tr><th scope="col">Товар</th><th scope="col">Цена</th><th scope="col">Кол-во</th><th scope="col">Доставка</th><th scope="col">Сумма</th><th scope="col">Удалить</th></tr></thead>
+  <tbody></tbody></table>
+ <div class="cart-actions"><button class="btn btn-light" type="button" id="clear-cart">Очистить корзину</button><a class="btn btn-light" href="catalog.html">Продолжить покупки</a></div>
+ <div class="cart-bottom">
+  <section aria-labelledby="ship"><h2 id="ship">Адрес доставки</h2>
+   <form data-validate data-success="Стоимость доставки: бесплатно." data-reset="no" novalidate>
+    <div class="field"><label for="country">Страна</label><select id="country" name="country" required><option value="">Выберите страну</option><option selected>Россия</option><option>Беларусь</option><option>Казахстан</option></select></div>
+    <div class="field"><label for="state">Область / регион</label><input id="state" name="state" required minlength="2" maxlength="40" pattern="[А-Яа-яЁёA-Za-z\s\-]+" title="Только буквы, пробелы и дефис" placeholder="Область / регион"></div>
+    <div class="field"><label for="zip">Почтовый индекс</label><input id="zip" name="zip" required inputmode="numeric" pattern="[0-9]{6}" maxlength="6" title="Индекс — ровно 6 цифр" placeholder="Например, 295000"></div>
+    <button class="btn btn-light" type="submit">Рассчитать доставку</button><p class="status" role="status"></p></form></section>
+  <section aria-labelledby="coupon"><h2 id="coupon">Купон на скидку</h2>
+   <form data-validate data-success="Купон применён!" novalidate>
+    <p class="hint">Введите код купона, если он у вас есть</p>
+    <div class="field"><label class="sr-only" for="code">Код купона</label><input id="code" name="code" required pattern="[A-Za-z0-9]{4,12}" title="Код: 4–12 латинских букв или цифр" placeholder="Код купона" autocomplete="off"></div>
+    <button class="btn btn-light" type="submit">Применить купон</button><p class="status" role="status"></p></form></section>
+  <aside class="totals" aria-label="Итого"><p><span>Сумма</span><span id="sub-total">0 ₽</span></p>
+   <p class="grand"><span>ИТОГО</span><span id="grand-total">0 ₽</span></p>
+   <a class="btn btn-pink" id="go-checkout" href="checkout.html">Оформить заказ</a></aside>
+ </div>
+</div>
+<section class="sub-wrap" aria-label="Отзыв и подписка"><div class="container">
+ <figure class="testimonial"><img src="img/avatar.svg" alt="Анна Петрова" width="62" height="62">
+  <div><blockquote><p>«Заказала стиральную машину — привезли на следующий день, установили бесплатно. Цены ниже, чем в сетевых магазинах, а гарантия 3 года!»</p></blockquote>
+  <figcaption><cite>Анна Петрова</cite><small>Симферополь</small></figcaption>
+  <div class="dots" aria-hidden="true"><span></span><span class="on"></span><span></span></div></div></figure>
+ <section class="subscribe"><h2>Подписка</h2><p>на новости и акции магазина</p>
+  <form class="sub-form" data-validate data-success="Спасибо! Вы подписаны на рассылку." novalidate>
+   <label class="sr-only" for="sub-email">Ваш e-mail</label>
+   <input id="sub-email" name="email" type="email" placeholder="Введите ваш e-mail" required maxlength="80" autocomplete="email">
+   <button type="submit">Подписаться</button></form>
+  <p class="status sub-msg" role="status" style="text-transform:none"></p></section>
+</div></section>
+</main>
+<footer>
+ <div class="container footer-main">
+  <section class="footer-about"><a class="logo" href="index.html"><img src="img/logo.svg" alt="ДомТех" width="250" height="60"></a>
+   <p>ДомТех — магазин бытовой техники для кухни, уборки и климата. Только сертифицированные товары с официальной гарантией производителя.</p>
+   <p>Бесплатная доставка по городу от 15 000 ₽, установка и подключение, рассрочка без переплат. Работаем ежедневно с 9:00 до 21:00.</p></section>
+  <nav aria-labelledby="f1"><h2 id="f1">Компания</h2><ul><li><a href="index.html">Главная</a></li><li><a href="catalog.html">Каталог</a></li><li><a href="index.html#about">О нас</a></li><li><a href="index.html#benefits">Как мы работаем</a></li><li><a href="checkout.html">Контакты</a></li></ul></nav>
+  <nav aria-labelledby="f2"><h2 id="f2">Информация</h2><ul><li><a href="index.html">Условия сделки</a></li><li><a href="index.html">Конфиденциальность</a></li><li><a href="cart.html">Как купить</a></li><li><a href="checkout.html">Доставка и оплата</a></li><li><a href="catalog.html">Акции</a></li></ul></nav>
+  <nav aria-labelledby="f3"><h2 id="f3">Категории</h2><ul><li><a href="catalog.html">Кухня</a></li><li><a href="catalog.html">Стирка</a></li><li><a href="catalog.html">Уборка</a></li><li><a href="catalog.html">Климат</a></li><li><a href="catalog.html">Все товары</a></li></ul></nav>
+ </div>
+ <div class="footer-bottom"><div class="container"><small>© 2026 ДомТех. Все права защищены.</small>
+  <div class="social"><a href="#" aria-label="ВКонтакте">vk</a><a href="#" aria-label="Telegram">tg</a><a href="#" aria-label="YouTube">yt</a><a href="#" aria-label="Одноклассники">ok</a><a href="#" aria-label="Pinterest">p</a></div></div></div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

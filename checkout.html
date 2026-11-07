@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Оформление заказа — ДомТех</title>
+<meta name="description" content="Оформление заказа: данные покупателя, доставка и оплата.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;subset=cyrillic&amp;display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="sr-only" href="#main">Перейти к содержимому</a>
+<header class="site-header">
+ <div class="container header-top">
+  <a class="logo" href="index.html"><img src="img/logo.svg" alt="ДомТех — магазин бытовой техники" width="250" height="60"></a>
+  <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Меню">&#9776;</button>
+  <div class="header-actions">
+   <a class="cart-link" href="cart.html" aria-label="Корзина"><img src="img/i-cart.svg" alt="" width="40" height="36"><span class="cart-count">0</span></a>
+   <details class="account"><summary>Мой аккаунт</summary>
+    <ul><li><a href="checkout.html">Войти</a></li><li><a href="checkout.html">Регистрация</a></li><li><a href="cart.html">Мои заказы</a></li></ul></details>
+  </div>
+  <form class="search" role="search" action="catalog.html" method="get">
+   <label class="sr-only" for="cat">Категория</label>
+   <select id="cat" name="cat"><option>Все</option><option>Кухня</option><option>Уборка</option><option>Климат</option><option>ТВ</option></select>
+   <label class="sr-only" for="q">Поиск товара</label>
+   <input id="q" name="q" type="search" placeholder="Поиск товара…" minlength="2" maxlength="60" required title="Введите от 2 до 60 символов">
+   <button type="submit" aria-label="Найти">&#128269;</button>
+  </form>
+ </div>
+ <nav class="main-nav" id="main-nav" aria-label="Основное меню"><ul><li><a href="index.html">Главная</a></li><li><a href="catalog.html?group=big">Крупная техника</a></li><li><a href="catalog.html?group=kitchen">Кухня</a></li><li><a href="catalog.html?group=clean">Уборка</a></li><li><a href="catalog.html?group=climate">Климат</a></li><li><a href="catalog.html?group=hit">Хиты продаж</a></li><li><a href="catalog.html?group=sale">Акции</a></li></ul></nav>
+</header>
+<main id="main">
+<section class="page-title"><div class="container"><h1>Оформление заказа</h1>
+<nav class="breadcrumbs" aria-label="Навигационная цепочка"><ol><li><a href="index.html">Главная</a></li><li><a href="cart.html">Корзина</a></li><li aria-current="page">Оформление заказа</li></ol></nav></div></section>
+<div class="container" style="padding-top:30px;padding-bottom:40px">
+ <div class="progress-wrap"><label for="steps-progress">Открыто шагов:</label> <progress id="steps-progress" value="1" max="6">1 из 6</progress></div>
+ <div class="steps" id="checkout-steps">
+  <details open><summary><i>01.</i> Адрес и вход</summary><div class="step-body"><div class="two-col">
+   <section><h3>Гостем или с регистрацией</h3><p class="sub">Зарегистрируйтесь — это удобно</p>
+    <fieldset><legend class="sr-only">Способ оформления</legend>
+     <label class="radio"><input type="radio" name="mode" value="guest"> Оформить как гость</label>
+     <label class="radio"><input type="radio" name="mode" value="reg" checked> Зарегистрироваться</label></fieldset>
+    <h3 style="margin-top:18px">Регистрация экономит время</h3><p class="sub">Преимущества постоянного клиента</p>
+    <ul class="benefits"><li>Быстрое оформление заказов</li><li>История заказов и статусы доставки</li></ul>
+    <a class="btn btn-light" href="#billing" style="margin-top:20px">Продолжить</a></section>
+   <section><h3>Уже зарегистрированы?</h3><p class="sub">Войдите в личный кабинет</p>
+    <form data-validate data-success="Вход выполнен." data-reset="no" novalidate>
+     <div class="field"><label for="email">E-mail <span class="req">*</span></label><input id="email" name="email" type="email" required maxlength="80" autocomplete="email"></div>
+     <div class="field"><label for="pass">Пароль <span class="req">*</span></label><input id="pass" name="pass" type="password" required minlength="6" maxlength="32" autocomplete="current-password" title="Минимум 6 символов"></div>
+     <p class="note">* Обязательные поля</p>
+     <button class="btn btn-light" type="submit">Войти</button> <a href="#" style="margin-left:18px;font-size:12px">Забыли пароль?</a>
+     <p class="status" role="status"></p></form></section></div></div></details>
+  <details id="billing"><summary><i>02.</i> Платёжные данные</summary><div class="step-body">
+   <form data-validate data-success="Данные сохранены. Заказ принят!" novalidate data-reset="no">
+    <div class="form-row">
+     <div class="field"><label for="fn">Имя <span class="req">*</span></label><input id="fn" name="fn" required minlength="2" maxlength="30" pattern="[А-Яа-яЁёA-Za-z\-]+" title="Только буквы" autocomplete="given-name"></div>
+     <div class="field"><label for="ln">Фамилия <span class="req">*</span></label><input id="ln" name="ln" required minlength="2" maxlength="30" pattern="[А-Яа-яЁёA-Za-z\-]+" title="Только буквы" autocomplete="family-name"></div>
+     <div class="field"><label for="tel">Телефон <span class="req">*</span></label><input id="tel" name="tel" type="tel" required pattern="\+?[0-9\s\-\(\)]{10,18}" title="Телефон: 10–18 цифр, например +7 978 123-45-67" placeholder="+7 978 123-45-67" autocomplete="tel"></div>
+     <div class="field"><label for="em2">E-mail <span class="req">*</span></label><input id="em2" name="em2" type="email" required autocomplete="email"></div>
+     <div class="field"><label for="pw1">Пароль <span class="req">*</span></label><input id="pw1" name="pw1" type="password" required minlength="6" autocomplete="new-password"></div>
+     <div class="field"><label for="pw2">Повтор пароля <span class="req">*</span></label><input id="pw2" name="pw2" type="password" required minlength="6" data-match="pw1" autocomplete="new-password"></div>
+     <div class="field"><label for="addr">Адрес доставки <span class="req">*</span></label><input id="addr" name="addr" required minlength="8" maxlength="120" autocomplete="street-address"></div>
+     <div class="field"><label for="date">Желаемая дата доставки</label><input id="date" name="date" type="date" min="2026-10-18" max="2027-01-31"></div>
+    </div>
+    <label class="radio"><input type="checkbox" name="agree" required> Я согласен с условиями обработки персональных данных</label>
+    <button class="btn btn-pink" type="submit" style="margin-top:12px">Оформить заказ</button><p class="status" role="status"></p></form></div></details>
+  <details><summary><i>03.</i> Информация о доставке</summary><div class="step-body"><p class="hint">Доставка осуществляется по адресу, указанному на шаге 02. Курьер позвонит за час до приезда.</p></div></details>
+  <details><summary><i>04.</i> Способ доставки</summary><div class="step-body"><fieldset><legend class="sr-only">Способ доставки</legend>
+   <label class="radio"><input type="radio" name="ship" checked> Курьер — бесплатно</label><label class="radio"><input type="radio" name="ship"> Самовывоз из магазина — бесплатно</label></fieldset></div></details>
+  <details><summary><i>05.</i> Способ оплаты</summary><div class="step-body"><fieldset><legend class="sr-only">Способ оплаты</legend>
+   <label class="radio"><input type="radio" name="pay" checked> Картой онлайн</label><label class="radio"><input type="radio" name="pay"> Наличными курьеру</label><label class="radio"><input type="radio" name="pay"> Рассрочка на 12 месяцев</label></fieldset></div></details>
+  <details><summary><i>06.</i> Проверка заказа</summary><div class="step-body"><p class="hint">Итого к оплате: <strong class="pink" id="order-total">0 ₽</strong>. Доставка бесплатно.</p></div></details>
+ </div>
+</div>
+<section class="sub-wrap" aria-label="Отзыв и подписка"><div class="container">
+ <figure class="testimonial"><img src="img/avatar.svg" alt="Анна Петрова" width="62" height="62">
+  <div><blockquote><p>«Заказала стиральную машину — привезли на следующий день, установили бесплатно. Цены ниже, чем в сетевых магазинах, а гарантия 3 года!»</p></blockquote>
+  <figcaption><cite>Анна Петрова</cite><small>Симферополь</small></figcaption>
+  <div class="dots" aria-hidden="true"><span></span><span class="on"></span><span></span></div></div></figure>
+ <section class="subscribe"><h2>Подписка</h2><p>на новости и акции магазина</p>
+  <form class="sub-form" data-validate data-success="Спасибо! Вы подписаны на рассылку." novalidate>
+   <label class="sr-only" for="sub-email">Ваш e-mail</label>
+   <input id="sub-email" name="email" type="email" placeholder="Введите ваш e-mail" required maxlength="80" autocomplete="email">
+   <button type="submit">Подписаться</button></form>
+  <p class="status sub-msg" role="status" style="text-transform:none"></p></section>
+</div></section>
+</main>
+<footer>
+ <div class="container footer-main">
+  <section class="footer-about"><a class="logo" href="index.html"><img src="img/logo.svg" alt="ДомТех" width="250" height="60"></a>
+   <p>ДомТех — магазин бытовой техники для кухни, уборки и климата. Только сертифицированные товары с официальной гарантией производителя.</p>
+   <p>Бесплатная доставка по городу от 15 000 ₽, установка и подключение, рассрочка без переплат. Работаем ежедневно с 9:00 до 21:00.</p></section>
+  <nav aria-labelledby="f1"><h2 id="f1">Компания</h2><ul><li><a href="index.html">Главная</a></li><li><a href="catalog.html">Каталог</a></li><li><a href="index.html#about">О нас</a></li><li><a href="index.html#benefits">Как мы работаем</a></li><li><a href="checkout.html">Контакты</a></li></ul></nav>
+  <nav aria-labelledby="f2"><h2 id="f2">Информация</h2><ul><li><a href="index.html">Условия сделки</a></li><li><a href="index.html">Конфиденциальность</a></li><li><a href="cart.html">Как купить</a></li><li><a href="checkout.html">Доставка и оплата</a></li><li><a href="catalog.html">Акции</a></li></ul></nav>
+  <nav aria-labelledby="f3"><h2 id="f3">Категории</h2><ul><li><a href="catalog.html">Кухня</a></li><li><a href="catalog.html">Стирка</a></li><li><a href="catalog.html">Уборка</a></li><li><a href="catalog.html">Климат</a></li><li><a href="catalog.html">Все товары</a></li></ul></nav>
+ </div>
+ <div class="footer-bottom"><div class="container"><small>© 2026 ДомТех. Все права защищены.</small>
+  <div class="social"><a href="#" aria-label="ВКонтакте">vk</a><a href="#" aria-label="Telegram">tg</a><a href="#" aria-label="YouTube">yt</a><a href="#" aria-label="Одноклассники">ok</a><a href="#" aria-label="Pinterest">p</a></div></div></div>
+</footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>
